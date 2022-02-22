@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Item = require('../../models/item');
+const Item = require('../../models/prom');
 
 // @route GET api/items
 // @desc Get all items
@@ -19,8 +19,14 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
 
     const newItem = new Item({
-        rating: req.body.rating,
-        number: req.body.number
+        version: req.body.version,
+	receiver: req.body.receiver,
+	groupKey: req.body.groupKey,
+	status: req.body.status,
+	truncatedAlerts: req.body.truncatedAlerts,
+	groupLabels: req.body.groupLabels,
+        externalURL: req.body.externalURL,
+	alerts: req.body.alerts
     });
 
     newItem.save()
